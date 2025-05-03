@@ -5,4 +5,4 @@ const port = env.PORT;
 
 app.listen({ port }).then(() => {
   console.log(`HTTP Server Running on port ${port}!`);
-})
+});
