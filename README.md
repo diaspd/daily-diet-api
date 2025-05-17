@@ -44,6 +44,7 @@ The app will be available on `http://localhost:3333` <br></br>
 This project was developed with the following technologies:
 <b>
 - Nodejs
+- knex
 </b>
 
 </br>
