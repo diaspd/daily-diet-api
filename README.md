@@ -46,6 +46,7 @@ This project was developed with the following technologies:
 - TypeScript
 - Nodejs
 - knex
+- Sqlite
 </b>
 
 </br>
