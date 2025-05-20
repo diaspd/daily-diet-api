@@ -47,6 +47,7 @@ This project was developed with the following technologies:
 - Nodejs
 - knex
 - Sqlite
+- Fastify
 </b>
 
 </br>
