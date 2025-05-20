@@ -53,7 +53,7 @@ This project was developed with the following technologies:
 </br>
 
 ## 📄 Project
-💰 .
+💰 An API project with Nodejs + Fastify, database in sqlite and query builder Knex, made to create meals, get them.
 
 <br></br>
 
