@@ -3,4 +3,6 @@ import { mealsRoutes } from "./routes/meals";
 
 export const app = fastify();
 
-app.register(mealsRoutes);
+app.register(mealsRoutes, {
+  prefix: "meals",
+});
