@@ -15,7 +15,7 @@
 Clone the project and access the folder.
 
 ```bash
-$ git clone 
+$ git clone https://github.com/diaspd/daily-diet-api.git
 $ cd 
 ```
 
@@ -43,13 +43,17 @@ The app will be available on `http://localhost:3333` <br></br>
 
 This project was developed with the following technologies:
 <b>
+- TypeScript
 - Nodejs
+- knex
+- Sqlite
+- Fastify
 </b>
 
 </br>
 
 ## 📄 Project
-💰 .
+💰 An API project with Nodejs + Fastify, database in sqlite and query builder Knex, made to create meals, get them.
 
 <br></br>
 
