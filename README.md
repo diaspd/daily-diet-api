@@ -35,7 +35,10 @@ $ npm run dev
 The app will be available on `http://localhost:3333` <br></br>
 
 ## 🌐 Methods:
+### User:
 
+
+### Meals:
 
 <br></br>
 
