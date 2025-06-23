@@ -39,7 +39,7 @@ The app will be available on `http://localhost:3333` <br></br>
 
 
 ### Meals:
-
+- GET `http://localhost:3333/meals`
 <br></br>
 
 ## 💻 Technologies
