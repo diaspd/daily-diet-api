@@ -33,9 +33,15 @@ export async function mealsRoutes(app: FastifyInstance) {
     },
   );
 
-  app.get("/", async () => {
-    const tables = await knex("sqlite_schema").select("*");
+  app.get(
+    "/",
+    { preHandler: [checkSessionIdExists] },
+    async (request, reply) => {
+      const meals = await knex("meals")
+        .where({ user_id: request.user?.id })
+        .orderBy("date", "desc");
 
-    return tables;
-  });
+      return reply.send({ meals });
+    },
+  );
 }
