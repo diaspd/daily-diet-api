@@ -20,8 +20,10 @@ export async function mealsRoutes(app: FastifyInstance) {
         request.body,
       );
 
+      const mealId = randomUUID();
+
       await knex("meals").insert({
-        id: randomUUID(),
+        id: mealId,
         name,
         description,
         is_on_diet: isOnDiet,
@@ -29,7 +31,7 @@ export async function mealsRoutes(app: FastifyInstance) {
         user_id: request.user?.id,
       });
 
-      return reply.status(201).send();
+      return reply.status(201).send({ id: mealId });
     },
   );
 
@@ -42,6 +44,24 @@ export async function mealsRoutes(app: FastifyInstance) {
         .orderBy("date", "desc");
 
       return reply.send({ meals });
+    },
+  );
+
+  app.get(
+    "/:mealId",
+    { preHandler: [checkSessionIdExists] },
+    async (request, reply) => {
+      const paramsSchema = z.object({ mealId: z.string().uuid() });
+
+      const { mealId } = paramsSchema.parse(request.params);
+
+      const meal = await knex("meals").where({ id: mealId }).first();
+
+      if (!meal) {
+        return reply.status(404).send({ error: "Meal not found" });
+      }
+
+      return reply.send({ meal });
     },
   );
 }
