@@ -64,4 +64,40 @@ export async function mealsRoutes(app: FastifyInstance) {
       return reply.send({ meal });
     },
   );
+
+  app.put(
+    "/:mealId",
+    { preHandler: [checkSessionIdExists] },
+    async (request, reply) => {
+      const paramsSchema = z.object({ mealId: z.string().uuid() });
+
+      const { mealId } = paramsSchema.parse(request.params);
+
+      const updateMealBodySchema = z.object({
+        name: z.string(),
+        description: z.string(),
+        isOnDiet: z.boolean(),
+        date: z.coerce.date(),
+      });
+
+      const { name, description, isOnDiet, date } = updateMealBodySchema.parse(
+        request.body,
+      );
+
+      const meal = await knex("meals").where({ id: mealId }).first();
+
+      if (!meal) {
+        return reply.status(404).send({ error: "Meal not found" });
+      }
+
+      await knex("meals").where({ id: mealId }).update({
+        name,
+        description,
+        is_on_diet: isOnDiet,
+        date: date.getTime(),
+      });
+
+      return reply.status(204).send();
+    },
+  );
 }
